@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a2100172-8fd8-47c8-b316-a208ee984397",
+    "name": "PBDJ 7 C-5",
+    "url": "https://practice.geeksforgeeks.org/contest/pbdj-7-c-5/",
+    "start_time": 1696962600000,
+    "end_time": 1728498600000,
+    "duration": 31536000,
+    "type_": "Unknown",
+    "in_24_hours": "Yes",
+    "status": "CODING",
+    "site": "geeksforgeeks"
+  },
+  {
+    "id": "6f8e7520-2345-48a7-9104-0ce2c29254ea",
+    "name": "Job-A-Thon 28 Hiring Challenge - For Freshers",
+    "url": "https://practice.geeksforgeeks.org/contest/job-a-thon-28-hiring-challenge-for-freshers/",
+    "start_time": 1703169000000,
+    "end_time": 1703178000000,
+    "duration": 9000,
+    "type_": "Unknown",
+    "in_24_hours": "No",
+    "status": "BEFORE",
+    "site": "geeksforgeeks"
+  }
+]
