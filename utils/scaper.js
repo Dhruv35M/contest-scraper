@@ -1,12 +1,12 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const fs = require("fs");
-const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { DateTime } = require("luxon"); // Luxon for date-time handling
+const awsConfig = require("../config/aws_config");
+const fs = awsConfig.initializeS3();
 
 const BASE_URL = "https://clist.by/";
-const OUTPUT_DIR = path.resolve(__dirname, "..", "output");
+const OUTPUT_DIR = "output";
 
 let allContests = [];
 
@@ -153,35 +153,24 @@ async function saveContestsByPlatform(contests) {
     }
 
     for (const platform in platformContests) {
-      if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdirSync(OUTPUT_DIR);
-      }
+      // Removed directory existence check and creation for S3
 
-      const filePath = path.join(OUTPUT_DIR, `${platform}_contests.json`);
+      const filePath = `${OUTPUT_DIR}/${platform}_contests.json`;
 
-      fs.writeFileSync(
+      // Write platform-specific contests to S3
+      await fs.promises.writeFile(
         filePath,
         JSON.stringify(platformContests[platform], null, 2),
-        "utf8",
-        (err) => {
-          if (err) {
-            console.error(`Error writing ${filePath}:`, err);
-          } else {
-            console.log(`File ${filePath} written successfully.`);
-          }
-        }
+        "utf8"
       );
     }
 
-    const filePath = path.join(OUTPUT_DIR, "all_contests.json");
-    if (!fs.existsSync(filePath)) {
-      fs.writeFileSync(filePath, "{}", "utf8");
-    }
+    const allContestsFilePath = `${OUTPUT_DIR}/all_contests.json`;
 
-    const AllContestsArray = allContests.flat();
-    fs.writeFileSync(
-      filePath,
-      JSON.stringify(AllContestsArray, null, 2),
+    // Write all contests to S3
+    await fs.promises.writeFile(
+      allContestsFilePath,
+      JSON.stringify(allContests.flat(), null, 2),
       "utf8"
     );
 

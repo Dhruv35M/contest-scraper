@@ -4,6 +4,8 @@ const ScheduledTask = require("./utils/scapingSchedule");
 const router = require("./routes/contests.router");
 const app = express();
 
+require("dotenv").config();
+
 app.use(cors());
 app.use("/api/v1", router);
 router.use((req, res) => {
