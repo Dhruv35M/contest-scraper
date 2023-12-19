@@ -1,5 +1,5 @@
 const schedule = require("node-schedule");
-const scraper = require("./scaper");
+const scraper = require("./scraper");
 
 function scrapingScript() {
   try {
