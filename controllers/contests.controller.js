@@ -1,8 +1,9 @@
 const awsConfig = require("../config/aws_config");
 const fs = awsConfig.initializeS3();
-const scraper = require("../utils/scaper");
+const scraper = require("../utils/scraper");
 
-const OUTPUT_DIR = "output"; // Path in the S3 bucket, no need for __dirname
+const OUTPUT_DIR = "output";
+
 exports.getContests = async (req, res) => {
   const { platform } = req.params;
   const filePath = `${OUTPUT_DIR}/${platform}_contests.json`;
@@ -23,7 +24,7 @@ exports.getAllContests = async (req, res) => {
     const contestData = {};
 
     for (const file of files) {
-      if (file.endsWith("all_contests.json")) {
+      if (file.endsWith("_contests.json")) {
         const platform = file.replace("_contests.json", "");
         const fileContent = await fs.readFile(`${OUTPUT_DIR}/${file}`, "utf-8");
         contestData[platform] = JSON.parse(fileContent);

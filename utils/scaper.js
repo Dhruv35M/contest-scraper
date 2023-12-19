@@ -157,8 +157,7 @@ async function saveContestsByPlatform(contests) {
 
       const filePath = `${OUTPUT_DIR}/${platform}_contests.json`;
 
-      // Write platform-specific contests to S3
-      await fs.promises.writeFile(
+      await fs.writeFile(
         filePath,
         JSON.stringify(platformContests[platform], null, 2),
         "utf8"
@@ -168,7 +167,7 @@ async function saveContestsByPlatform(contests) {
     const allContestsFilePath = `${OUTPUT_DIR}/all_contests.json`;
 
     // Write all contests to S3
-    await fs.promises.writeFile(
+    await fs.writeFile(
       allContestsFilePath,
       JSON.stringify(allContests.flat(), null, 2),
       "utf8"
