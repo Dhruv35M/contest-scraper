@@ -2,10 +2,10 @@
   "name": "coding-contests-scraper",
   "version": "1.0.0",
   "description": "A web scraper that provides APIs for contests on top coding Plateforms",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "@cyclic.sh/s3fs": "^1.2.9",

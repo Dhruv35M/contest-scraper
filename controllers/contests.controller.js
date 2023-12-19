@@ -1,6 +1,6 @@
 const awsConfig = require("../config/aws_config");
 const fs = awsConfig.initializeS3();
-const scraper = require("../utils/scaper");
+const scraper = require("../utils/scraper");
 
 const OUTPUT_DIR = "output";
 
