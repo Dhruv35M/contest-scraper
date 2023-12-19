@@ -1,5 +1,6 @@
 const awsConfig = require("../config/aws_config");
 const fs = awsConfig.initializeS3();
+const scraper = require("../utils/scaper");
 
 const OUTPUT_DIR = "output"; // Path in the S3 bucket, no need for __dirname
 exports.getContests = async (req, res) => {
